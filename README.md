@@ -1,5 +1,7 @@
 # A named-argument constructor call loses a line number when the class is already compiled
 
+Reported as [GROOVY-12551](https://issues.apache.org/jira/browse/GROOVY-12551). The fix is proposed in [apache/groovy#3080](https://github.com/apache/groovy/pull/3080), with a backport to `GROOVY_5_1_X` in commit [65e1f69728](https://github.com/jdaugherty/groovy/commit/65e1f69728b6a6e334071ca6273a6102b4b7d144).
+
 With static compilation, Groovy 5 expands a constructor call with named arguments, `new Ctx(name: name)`, into a
 constructor call followed by one assignment per argument. The assignment gets a line number entry only when `Ctx` is
 compiled together with the caller. When `Ctx` is already compiled, the entry is missing, so the same source compiles
